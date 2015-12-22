@@ -5,8 +5,8 @@
 	<artifactId>Urlaub</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Urlaub Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+	<name>Übungs-Maven Webapp am Beispiel eines Urlaubs-Verwaltungs-Tools</name>
+	<url>https://github.com/MaZderMind/Urlaub</url>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
