@@ -1,4 +1,4 @@
-package de.mazdermind.rest;
+package de.mazdermind.urlaub.rest;
 
 import javax.ws.rs.Path;
 
