@@ -5,7 +5,7 @@
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
 	<servlet>
-		<servlet-name>JAX-RS Servlet</servlet-name>
+		<servlet-name>de.mazdermind.urlaub</servlet-name>
 		<description>JAX-RS Tools Generated - Do not modify</description>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 		<init-param>
@@ -21,7 +21,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>JAX-RS Servlet</servlet-name>
+		<servlet-name>de.mazdermind.urlaub</servlet-name>
 		<url-pattern>/jaxrs/*</url-pattern>
 	</servlet-mapping>
 </web-app>
