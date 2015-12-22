@@ -11,7 +11,7 @@ public class SampleRequestHandler
 	@Produces("text/html")
 	public String getAsHtml()
 	{
-		return "<h1>Foo/h1>";
+		return "<h1>Foo</h1>";
 	}
 
 	@GET
