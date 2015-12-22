@@ -38,6 +38,17 @@
 						<target>1.7</target>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>9.2.14.v20151106</version>
+					<configuration>
+						<scanIntervalSeconds>1</scanIntervalSeconds>
+						<webApp>
+							<contextPath>/Urlaub</contextPath>
+						</webApp>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
