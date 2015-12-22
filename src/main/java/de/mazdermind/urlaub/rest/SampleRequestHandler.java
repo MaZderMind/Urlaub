@@ -8,8 +8,15 @@ import javax.ws.rs.Produces;
 public class SampleRequestHandler
 {
 	@GET
+	@Produces("text/html")
+	public String getAsHtml()
+	{
+		return "<h1>Foo/h1>";
+	}
+
+	@GET
 	@Produces("text/plain")
-	public String printMessage()
+	public String getAsText()
 	{
 		return "Foo";
 	}
