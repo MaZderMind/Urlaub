@@ -15,15 +15,17 @@ public class EmployeeResource {
 	@Path("/{id}")
 	@Produces("application/json")
 	public Employee getEmployee(@PathParam("id") Integer id) {
-		Employee employee = new Employee(id);
+		Employee employee = new Employee();
+		employee.setId(id);
 		employee.setName("Marc");
 		return employee;
 	}
 
 	@POST
-	@Produces("text/plain")
+	@Produces("application/json")
 	@Consumes("application/json")
-	public String createEmployee(Employee employee) {
-		return employee.getName();
+	public Employee createEmployee(Employee employee) {
+		employee.setName("modified");
+		return employee;
 	}
 }

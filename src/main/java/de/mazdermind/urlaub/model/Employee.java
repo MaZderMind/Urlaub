@@ -2,12 +2,8 @@ package de.mazdermind.urlaub.model;
 
 public class Employee {
 	private String name;
-	private Integer id;
-
-	public Employee(Integer id) {
-		this.id = id;
-	}
-
+	private int id;
+	
 	public String getName() {
 		return name;
 	}
@@ -16,7 +12,11 @@ public class Employee {
 		this.name = name;
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
