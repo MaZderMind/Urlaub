@@ -1,6 +1,8 @@
 package de.mazdermind.urlaub.rest;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -16,5 +18,12 @@ public class EmployeeResource {
 		Employee employee = new Employee(id);
 		employee.setName("Marc");
 		return employee;
+	}
+
+	@POST
+	@Produces("text/plain")
+	@Consumes("application/json")
+	public String createEmployee(Employee employee) {
+		return employee.getName();
 	}
 }
