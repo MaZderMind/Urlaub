@@ -12,7 +12,7 @@ public class EmployeeModelTest {
 		Employee e = new Employee();
 		e.setId(42);
 		e.setName("Donald");
-		e.setState(FederalState.HE);
+		e.setFederalState(FederalState.HE);
 	}
 
 	@Test

@@ -8,7 +8,7 @@ public class Employee {
 	private int yearOfEntrance;
 	private int availableDaysInYearOfEntrance;
 	private int availableDays;
-	private FederalState state;
+	private FederalState federalState;
 	private List<EmployeeHolidays> holidays;
 
 	public String getName() {
@@ -64,11 +64,11 @@ public class Employee {
 		this.yearOfEntrance = yearOfEntrance;
 	}
 
-	public FederalState getState() {
-		return state;
+	public FederalState getFederalState() {
+		return federalState;
 	}
 
-	public void setState(FederalState state) {
-		this.state = state;
+	public void setFederalState(FederalState state) {
+		this.federalState = state;
 	}
 }
