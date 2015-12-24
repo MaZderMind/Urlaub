@@ -1,15 +1,16 @@
 package de.mazdermind.urlaub.model;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Employee {
 	private String name;
-	private int id;
-	private int yearOfEntrance;
-	private int availableDaysInYearOfEntrance;
-	private int availableDays;
+	private Integer id;
+	private Integer yearOfEntrance;
+	private Integer availableDaysInYearOfEntrance;
+	private Integer availableDays;
 	private FederalState federalState;
-	private List<EmployeeHolidays> holidays;
+	private List<EmployeeHoliday> holidays;
 
 	public String getName() {
 		return name;
@@ -19,48 +20,51 @@ public class Employee {
 		this.name = name;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public List<EmployeeHolidays> getHolidays() {
-		return holidays;
+	public List<EmployeeHoliday> getHolidays() {
+		return Collections.unmodifiableList(holidays);
 	}
 
-	public int getAvailableDays() {
+	public Integer getAvailableDays() {
 		return availableDays;
 	}
 
-	public int getAvailableDays(int year) {
+	public Integer getAvailableDays(int year) {
+		if(this.yearOfEntrance == null)
+			return this.availableDays;
+
 		if (year < this.yearOfEntrance)
 			return 0;
 		else if (year == this.yearOfEntrance)
 			return this.availableDaysInYearOfEntrance;
 		else
-			return availableDays;
+			return this.availableDays;
 	}
 
-	public void setAvailableDays(int availableDays) {
+	public void setAvailableDays(Integer availableDays) {
 		this.availableDays = availableDays;
 	}
 
-	public int getAvailableDaysInYearOfEntrance() {
+	public Integer getAvailableDaysInYearOfEntrance() {
 		return availableDaysInYearOfEntrance;
 	}
 
-	public void setAvailableDaysInYearOfEntrance(int availableDaysInYearOfEntrance) {
+	public void setAvailableDaysInYearOfEntrance(Integer availableDaysInYearOfEntrance) {
 		this.availableDaysInYearOfEntrance = availableDaysInYearOfEntrance;
 	}
 
-	public int getYearOfEntrance() {
+	public Integer getYearOfEntrance() {
 		return yearOfEntrance;
 	}
 
-	public void setYearOfEntrance(int yearOfEntrance) {
+	public void setYearOfEntrance(Integer yearOfEntrance) {
 		this.yearOfEntrance = yearOfEntrance;
 	}
 
@@ -70,5 +74,33 @@ public class Employee {
 
 	public void setFederalState(FederalState state) {
 		this.federalState = state;
+	}
+
+	// Calculation Methods
+	public int calculateUsedDays(int year) {
+		return 0;
+	}
+
+	public int calculatePlannedDays(int year) {
+		return 0;
+	}
+
+	public int calculateRemainingDays(int year) {
+		return this.getAvailableDays(year) - this.calculateUsedDays(year);
+	}
+
+	public int calculatePlannedRemainingDays(int year) {
+		return this.getAvailableDays(year) - this.calculatePlannedDays(year);
+	}
+	
+	public void addHoliday(EmployeeHoliday holiday) {
+		if(!this.canAddHoliday(holiday))
+			throw new UnsupportedOperationException();
+		
+		this.holidays.add(holiday);
+	}
+	
+	public boolean canAddHoliday(EmployeeHoliday holiday) {
+		return false;
 	}
 }
