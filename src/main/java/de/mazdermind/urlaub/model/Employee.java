@@ -9,7 +9,8 @@ public class Employee {
 	private Integer yearOfEntrance;
 	private Integer availableDaysInYearOfEntrance;
 	private Integer availableDays;
-	private FederalState federalState;
+	private String federalState;
+	private String country;
 	private List<EmployeeHoliday> holidays;
 
 	public String getName() {
@@ -68,11 +69,11 @@ public class Employee {
 		this.yearOfEntrance = yearOfEntrance;
 	}
 
-	public FederalState getFederalState() {
+	public String getFederalState() {
 		return federalState;
 	}
 
-	public void setFederalState(FederalState state) {
+	public void setFederalState(String state) {
 		this.federalState = state;
 	}
 
@@ -102,5 +103,13 @@ public class Employee {
 	
 	public boolean canAddHoliday(EmployeeHoliday holiday) {
 		return false;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 }

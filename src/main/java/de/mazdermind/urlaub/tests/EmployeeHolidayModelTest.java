@@ -13,7 +13,6 @@ import org.junit.Test;
 
 import de.mazdermind.urlaub.model.Employee;
 import de.mazdermind.urlaub.model.EmployeeHoliday;
-import de.mazdermind.urlaub.model.FederalState;
 
 public class EmployeeHolidayModelTest {
 	private Employee employee;
@@ -22,9 +21,10 @@ public class EmployeeHolidayModelTest {
 	public void setupEmployeeMock() {
 		this.employee = new Employee();
 		this.employee.setId(5);
+		this.employee.setCountry("DE");
 		this.employee.setName("Donald");
 		this.employee.setAvailableDays(30);
-		this.employee.setFederalState(FederalState.HE);
+		this.employee.setFederalState("he");
 	}
 
 	@Test

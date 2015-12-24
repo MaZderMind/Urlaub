@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import de.mazdermind.urlaub.model.Employee;
-import de.mazdermind.urlaub.model.FederalState;
 
 public class EmployeeModelTest {
 	@Test
@@ -13,7 +12,8 @@ public class EmployeeModelTest {
 		Employee e = new Employee();
 		e.setId(42);
 		e.setName("Donald");
-		e.setFederalState(FederalState.HE);
+		e.setCountry("DE");
+		e.setFederalState("he");
 	}
 
 	@Test
