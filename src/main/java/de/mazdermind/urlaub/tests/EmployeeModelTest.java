@@ -1,12 +1,13 @@
 package de.mazdermind.urlaub.tests;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import de.mazdermind.urlaub.model.Employee;
 import de.mazdermind.urlaub.model.FederalState;
 
 public class EmployeeModelTest {
-
 	@Test
 	public void testCreateEmployee() {
 		Employee e = new Employee();
@@ -27,13 +28,13 @@ public class EmployeeModelTest {
 		e.setAvailableDaysInYearOfEntrance(15);
 		e.setAvailableDays(30);
 
-		assert e.getAvailableDays() == 30;
-		assert e.getAvailableDays(1999) == 0;
-		assert e.getAvailableDays(2004) == 0;
-		assert e.getAvailableDays(2005) == 15;
-		assert e.getAvailableDays(2006) == 30;
-		assert e.getAvailableDays(2007) == 30;
-		assert e.getAvailableDays(2015) == 30;
+		assertEquals(30, (int)e.getAvailableDays());
+		assertEquals(0, (int)e.getAvailableDays(1999));
+		assertEquals(0, (int)e.getAvailableDays(2004));
+		assertEquals(15, (int)e.getAvailableDays(2005));
+		assertEquals(30, (int)e.getAvailableDays(2006));
+		assertEquals(30, (int)e.getAvailableDays(2007));
+		assertEquals(30, (int)e.getAvailableDays(2015));
 	}
 
 	@Test
@@ -44,12 +45,12 @@ public class EmployeeModelTest {
 		e.setAvailableDaysInYearOfEntrance(15);
 		e.setAvailableDays(30);
 
-		assert e.getAvailableDays() == 30;
-		assert e.getAvailableDays(1999) == 30;
-		assert e.getAvailableDays(2004) == 30;
-		assert e.getAvailableDays(2005) == 30;
-		assert e.getAvailableDays(2006) == 30;
-		assert e.getAvailableDays(2007) == 30;
-		assert e.getAvailableDays(2015) == 30;
+		assertEquals(30, (int)e.getAvailableDays());
+		assertEquals(30, (int)e.getAvailableDays(1999));
+		assertEquals(30, (int)e.getAvailableDays(2004));
+		assertEquals(30, (int)e.getAvailableDays(2005));
+		assertEquals(30, (int)e.getAvailableDays(2006));
+		assertEquals(30, (int)e.getAvailableDays(2007));
+		assertEquals(30, (int)e.getAvailableDays(2015));
 	}
 }
