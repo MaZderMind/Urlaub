@@ -1,14 +1,19 @@
 package de.mazdermind.urlaub.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 import de.jollyday.Holiday;
+import de.jollyday.HolidayCalendar;
+import de.jollyday.HolidayManager;
+import de.jollyday.ManagerParameters;
 
 public class EmployeeHoliday {
-	private Date start;
-	private Date end;
+	private LocalDate start;
+	private LocalDate end;
 	private HolidayPlanningState planningState;
 	private Employee parent;
 
@@ -20,19 +25,19 @@ public class EmployeeHoliday {
 		this.parent = parent;
 	}
 
-	public Date getStart() {
+	public LocalDate getStart() {
 		return start;
 	}
 
-	public void setStart(Date start) {
+	public void setStart(LocalDate start) {
 		this.start = start;
 	}
 
-	public Date getEnd() {
+	public LocalDate getEnd() {
 		return end;
 	}
 
-	public void setEnd(Date end) {
+	public void setEnd(LocalDate end) {
 		this.end = end;
 	}
 
@@ -62,6 +67,25 @@ public class EmployeeHoliday {
 	}
 
 	public List<Holiday> listFederalHolidays() {
-		return new ArrayList<Holiday>();
+		String country = this.getParent().getCountry();
+		String federalState = this.getParent().getFederalState();
+		HolidayManager holidayManager = HolidayManager
+				.getInstance(ManagerParameters.create(HolidayCalendar.valueOf(country)));
+
+		List<Holiday> allHolidays = new ArrayList<>();
+
+		for (int year = this.start.getYear(); year <= this.end.getYear(); year++) {
+			Set<Holiday> holidaysThisYear = holidayManager.getHolidays(year, federalState);
+
+			Comparator<Holiday> byDate = (h1, h2) -> h1.getDate().compareTo(h2.getDate());
+
+			holidaysThisYear.stream()
+				.filter(h -> h.getDate().isAfter(this.start))
+				.filter(h -> h.getDate().isBefore(this.end))
+				.sorted(byDate)
+				.forEach(h -> allHolidays.add(h));
+		}
+
+		return allHolidays;
 	}
 }
