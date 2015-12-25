@@ -20,7 +20,7 @@ public class EmployeeHolidayModelTest {
 	public void setupEmployeeMock() {
 		this.employee = new Employee();
 		this.employee.setId(5);
-		this.employee.setCountry("DE");
+		this.employee.setCountry("GERMANY");
 		this.employee.setName("Donald");
 		this.employee.setAvailableDays(30);
 		this.employee.setFederalState("he");
