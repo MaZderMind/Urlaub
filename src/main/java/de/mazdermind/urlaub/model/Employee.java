@@ -77,6 +77,14 @@ public class Employee {
 		this.federalState = state;
 	}
 
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
 	// Calculation Methods
 	public int calculateUsedDays(int year) {
 		return 0;
@@ -103,13 +111,5 @@ public class Employee {
 	
 	public boolean canAddHoliday(EmployeeHoliday holiday) {
 		return false;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
 	}
 }
