@@ -2,7 +2,6 @@ package de.mazdermind.urlaub.tests;
 
 import static org.junit.Assert.*;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +28,7 @@ public class EmployeeHolidayModelTest {
 	}
 
 	@Test
-	public void testTotalNumberOfDaysCalculation() throws ParseException {
+	public void testTotalNumberOfDaysCalculation() {
 		EmployeeHoliday h = new EmployeeHoliday(this.employee);
 
 		// a work-week (monday - friday)
@@ -59,7 +58,7 @@ public class EmployeeHolidayModelTest {
 	}
 
 	@Test
-	public void testNumberOfWorkdaysCalculation() throws ParseException {
+	public void testNumberOfWorkdaysCalculation() {
 		EmployeeHoliday h = new EmployeeHoliday(this.employee);
 
 		// a work-week (monday - friday)
@@ -79,7 +78,7 @@ public class EmployeeHolidayModelTest {
 	}
 
 	@Test
-	public void testNumberOfWorkdaysCalculationAcrossFederalHolidays() throws ParseException {
+	public void testNumberOfWorkdaysCalculationAcrossFederalHolidays() {
 		EmployeeHoliday h = new EmployeeHoliday(this.employee);
 
 		// a work-week (monday - friday) with a federal holiday in it
@@ -103,7 +102,7 @@ public class EmployeeHolidayModelTest {
 	}
 
 	@Test
-	public void testNumberOfWorkdaysCalculationAcrossMultipleFederalHolidaysOnTheSameDay() throws ParseException {
+	public void testNumberOfWorkdaysCalculationAcrossMultipleFederalHolidaysOnTheSameDay() {
 		// https://de.wikipedia.org/wiki/Feiertage_in_Deutschland#Zusammenfallen_zweier_Feiertage
 		EmployeeHoliday h = new EmployeeHoliday(this.employee);
 
@@ -115,7 +114,7 @@ public class EmployeeHolidayModelTest {
 	}
 
 	@Test
-	public void testListFederalHolidays() throws ParseException {
+	public void testListFederalHolidays() {
 		EmployeeHoliday h = new EmployeeHoliday(this.employee);
 		
 		List<Holiday> expected;
