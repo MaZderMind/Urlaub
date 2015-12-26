@@ -80,10 +80,10 @@ public class EmployeeHoliday {
 			Comparator<Holiday> byDate = (h1, h2) -> h1.getDate().compareTo(h2.getDate());
 
 			holidaysThisYear.stream()
-				.filter(h -> h.getDate().isAfter(this.start))
-				.filter(h -> h.getDate().isBefore(this.end))
+				.filter(h -> h.getDate().isAfter(this.start) || h.getDate().isEqual(this.start))
+				.filter(h -> h.getDate().isBefore(this.end) || h.getDate().isEqual(this.end))
 				.sorted(byDate)
-				.forEach(h -> allHolidays.add(h));
+				.forEachOrdered(allHolidays::add);
 		}
 
 		return allHolidays;
