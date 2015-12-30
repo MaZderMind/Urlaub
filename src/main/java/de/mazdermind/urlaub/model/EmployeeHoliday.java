@@ -21,10 +21,11 @@ public class EmployeeHoliday {
 	private Employee parent;
 
 	public EmployeeHoliday() {
-
+		this.planningState = HolidayPlanningState.PLANNED;
 	}
 
 	public EmployeeHoliday(Employee parent) {
+		this();
 		this.parent = parent;
 	}
 
