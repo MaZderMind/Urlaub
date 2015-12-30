@@ -177,8 +177,8 @@ public class EmployeeHolidayModelCombinedTest {
 
 		assertEquals(22, (int) employee.calculateRemainingDays(2015));
 		assertEquals(8, (int) employee.calculateUsedDays(2015));
-		assertEquals(25, (int) employee.calculateRemainingDays(2015));
-		assertEquals(5, (int) employee.calculateUsedDays(2015));
+		assertEquals(25, (int) employee.calculateRemainingDays(2016));
+		assertEquals(5, (int) employee.calculateUsedDays(2016));
 	}
 
 	@Test
