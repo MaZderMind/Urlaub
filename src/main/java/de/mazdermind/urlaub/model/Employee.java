@@ -1,7 +1,10 @@
 package de.mazdermind.urlaub.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Employee {
 	private String name;
@@ -11,7 +14,7 @@ public class Employee {
 	private Integer availableDays;
 	private String federalState;
 	private String country;
-	private List<EmployeeHoliday> holidays;
+	private List<EmployeeHoliday> holidays = new ArrayList<EmployeeHoliday>();
 
 	public String getName() {
 		return name;
@@ -87,11 +90,22 @@ public class Employee {
 
 	// Calculation Methods
 	public int calculateUsedDays(int year) {
-		return 0;
+		return this.holidays.stream()
+			.filter(h ->
+				h.getPlanningState() == HolidayPlanningState.REQESTED ||
+				h.getPlanningState() == HolidayPlanningState.GRANTED
+			)
+			.mapToInt(h -> h.calculateNumberOfWorkdays(year))
+			.sum();
 	}
 
 	public int calculatePlannedDays(int year) {
-		return 0;
+		return this.holidays.stream()
+			.filter(h ->
+				h.getPlanningState() == HolidayPlanningState.PLANNED
+			)
+			.mapToInt(h -> h.calculateNumberOfWorkdays(year))
+			.sum();
 	}
 
 	public int calculateRemainingDays(int year) {
@@ -110,6 +124,12 @@ public class Employee {
 	}
 	
 	public boolean canAddHoliday(EmployeeHoliday holiday) {
-		return false;
+		for (int year = holiday.getStart().getYear(); year <= holiday.getEnd().getYear(); year++) {
+			// conditional return is … hmm
+			if(holiday.calculateNumberOfWorkdays(year) > this.calculateRemainingDays(year))
+				return false;
+		}
+
+		return true;
 	}
 }

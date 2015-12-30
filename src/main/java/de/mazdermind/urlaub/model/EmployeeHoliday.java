@@ -66,6 +66,14 @@ public class EmployeeHoliday {
 	}
 
 	public int calculateNumberOfWorkdays() {
+		return this.calculateNumberOfWorkdaysInYear(null);
+	}
+
+	public int calculateNumberOfWorkdays(int year) {
+		return this.calculateNumberOfWorkdaysInYear(year);
+	}
+
+	private int calculateNumberOfWorkdaysInYear(Integer year) {
 		int days = 0;
 
 		// list of holidays in this employee holiday's span
@@ -82,6 +90,10 @@ public class EmployeeHoliday {
 			// if it's a weekend -> skip it
 			// TODO: make free days configurable
 			if (date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY)
+				continue;
+
+			// if day is not in the requested year
+			if (year != null && date.getYear() != year)
 				continue;
 
 			// if it is a holiday -> skip it
