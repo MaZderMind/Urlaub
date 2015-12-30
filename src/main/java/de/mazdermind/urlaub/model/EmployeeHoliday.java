@@ -112,12 +112,13 @@ public class EmployeeHoliday {
 			Set<Holiday> holidaysThisYear = holidayManager.getHolidays(year, federalState);
 
 			Comparator<Holiday> byDate = (h1, h2) -> h1.getDate().compareTo(h2.getDate());
+			Comparator<Holiday> byDescription = (h1, h2) -> h1.getDescription().compareTo(h2.getDescription());
 
 			// filter relevant holidays, sort them and add them to the target list
 			holidaysThisYear.stream()
 				.filter(h -> h.getDate().isAfter(this.start) || h.getDate().isEqual(this.start))
 				.filter(h -> h.getDate().isBefore(this.end) || h.getDate().isEqual(this.end))
-				.sorted(byDate)
+				.sorted(byDate.thenComparing(byDescription))
 				.forEachOrdered(allHolidays::add);
 		}
 
