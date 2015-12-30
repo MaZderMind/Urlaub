@@ -36,6 +36,7 @@ public class EmployeeHolidayModelCombinedTest {
 		// a work-week (monday - friday)
 		h.setStart(LocalDate.of(2015, 12, 07));
 		h.setEnd(LocalDate.of(2015, 12, 11));
+		h.setPlanningState(HolidayPlanningState.REQESTED);
 
 		assertEquals(30, (int) employee.calculateRemainingDays(2015));
 		assertEquals(0, (int) employee.calculateUsedDays(2015));
@@ -56,6 +57,7 @@ public class EmployeeHolidayModelCombinedTest {
 		// a complete week (monday - sunday)
 		h.setStart(LocalDate.of(2015, 12, 07));
 		h.setEnd(LocalDate.of(2015, 12, 13));
+		h.setPlanningState(HolidayPlanningState.REQESTED);
 
 		assertEquals(30, (int) employee.calculateRemainingDays(2015));
 		assertEquals(0, (int) employee.calculateUsedDays(2015));
@@ -77,6 +79,7 @@ public class EmployeeHolidayModelCombinedTest {
 		// (2015-12-25)
 		h.setStart(LocalDate.of(2015, 12, 21));
 		h.setEnd(LocalDate.of(2015, 12, 25));
+		h.setPlanningState(HolidayPlanningState.REQESTED);
 
 		assertEquals(30, (int) employee.calculateRemainingDays(2015));
 		assertEquals(0, (int) employee.calculateUsedDays(2015));
@@ -97,6 +100,7 @@ public class EmployeeHolidayModelCombinedTest {
 		// a work-week (monday - friday)
 		h.setStart(LocalDate.of(2015, 12, 07));
 		h.setEnd(LocalDate.of(2015, 12, 11));
+		h.setPlanningState(HolidayPlanningState.PLANNED);
 
 		assertEquals(30, (int) employee.calculateRemainingDays(2015));
 		assertEquals(0, (int) employee.calculateUsedDays(2015));
@@ -104,7 +108,6 @@ public class EmployeeHolidayModelCombinedTest {
 		assertEquals(30, (int) employee.calculatePlannedRemainingDays(2015));
 		assertEquals(0, (int) employee.calculatePlannedDays(2015));
 
-		h.setPlanningState(HolidayPlanningState.PLANNED);
 		employee.addHoliday(h);
 
 		assertEquals(30, (int) employee.calculateRemainingDays(2015));
@@ -125,6 +128,7 @@ public class EmployeeHolidayModelCombinedTest {
 		h = new EmployeeHoliday(employee);
 		h.setStart(LocalDate.of(2015, 12, 07));
 		h.setEnd(LocalDate.of(2015, 12, 11));
+		h.setPlanningState(HolidayPlanningState.REQESTED);
 
 		assertEquals(7, (int) employee.calculateRemainingDays(2015));
 		assertEquals(0, (int) employee.calculateUsedDays(2015));
@@ -162,6 +166,7 @@ public class EmployeeHolidayModelCombinedTest {
 		// - 04.01. to 08.01. (5)
 		h.setStart(LocalDate.of(2015, 12, 21));
 		h.setEnd(LocalDate.of(2016, 01, 10));
+		h.setPlanningState(HolidayPlanningState.REQESTED);
 
 		assertEquals(30, (int) employee.calculateRemainingDays(2015));
 		assertEquals(0, (int) employee.calculateUsedDays(2015));
@@ -190,6 +195,7 @@ public class EmployeeHolidayModelCombinedTest {
 		// - 04.01. to 17.01. (10) -> exceed available days
 		h.setStart(LocalDate.of(2015, 12, 28));
 		h.setEnd(LocalDate.of(2016, 01, 17));
+		h.setPlanningState(HolidayPlanningState.REQESTED);
 
 		assertEquals(5, (int) employee.calculateRemainingDays(2015));
 		assertEquals(0, (int) employee.calculateUsedDays(2015));
@@ -223,6 +229,7 @@ public class EmployeeHolidayModelCombinedTest {
 		// - 04.01. to 08.01. (5)
 		h.setStart(LocalDate.of(2015, 12, 21));
 		h.setEnd(LocalDate.of(2016, 01, 10));
+		h.setPlanningState(HolidayPlanningState.REQESTED);
 
 		assertEquals(20, (int) employee.calculateRemainingDays(2015));
 		assertEquals(0, (int) employee.calculateUsedDays(2015));
@@ -255,6 +262,7 @@ public class EmployeeHolidayModelCombinedTest {
 		// - 04.01. to 08.01. (5)
 		h.setStart(LocalDate.of(2015, 12, 21));
 		h.setEnd(LocalDate.of(2016, 01, 10));
+		h.setPlanningState(HolidayPlanningState.REQESTED);
 
 		assertEquals(5, (int) employee.calculateRemainingDays(2015));
 		assertEquals(0, (int) employee.calculateUsedDays(2015));
