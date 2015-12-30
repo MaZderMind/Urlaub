@@ -2,9 +2,7 @@ package de.mazdermind.urlaub.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.IntSummaryStatistics;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Employee {
 	private String name;
@@ -41,7 +39,7 @@ public class Employee {
 	}
 
 	public Integer getAvailableDays(int year) {
-		if(this.yearOfEntrance == null)
+		if (this.yearOfEntrance == null)
 			return this.availableDays;
 
 		if (year < this.yearOfEntrance)
@@ -115,18 +113,18 @@ public class Employee {
 	public int calculatePlannedRemainingDays(int year) {
 		return this.getAvailableDays(year) - this.calculatePlannedDays(year);
 	}
-	
+
 	public void addHoliday(EmployeeHoliday holiday) {
-		if(!this.canAddHoliday(holiday))
+		if (!this.canAddHoliday(holiday))
 			throw new UnsupportedOperationException();
-		
+
 		this.holidays.add(holiday);
 	}
-	
+
 	public boolean canAddHoliday(EmployeeHoliday holiday) {
 		for (int year = holiday.getStart().getYear(); year <= holiday.getEnd().getYear(); year++) {
 			// conditional return is … hmm
-			if(holiday.calculateNumberOfWorkdays(year) > this.calculateRemainingDays(year))
+			if (holiday.calculateNumberOfWorkdays(year) > this.calculateRemainingDays(year))
 				return false;
 		}
 
