@@ -3,7 +3,7 @@
     mvn --version
 
 
-Should at least mention `Apache Maven 3.0.0` or higher and `Java version: 1.7` or higher. `Java 1.8` may or may not work.
+Should at least mention `Apache Maven 3.0.0` or higher and `Java version: 1.8` or higher.
 
 I used `Eclipse Mars.1 (4.5.1)`.
 
