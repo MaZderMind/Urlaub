@@ -13,4 +13,4 @@ I used `Eclipse Mars.1 (4.5.1)`.
 If you want it on another Port, you can do something like `mvn jetty:run -Djetty.port=9999`  but before heading Straight to Production ;) consider running an ngingx Proxy in front of it. This will not only allow you to do SSL Offloading but also URL Rewriting and fast Serving of static Assets and is usualy a good thing to do.  
 
 # Opening in Eclipse
-I got best results by using `File->Import->Maven->Existing Maven Projects`. Ensure the `Project->Build Automaticaly` Menu-Item is checked, which will allow the Development-Server find the compiled changes and reload automatically, when ever you change something in a file.
+I got best results by using `File->Import->Maven->Existing Maven Projects`. Ensure the `Project->Build Automaticaly` Menu-Item is checked, which will allow the Development-Server to find the compiled changes and reload automatically, when ever you change something in a file.
